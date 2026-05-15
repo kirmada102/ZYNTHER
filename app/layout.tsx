@@ -8,6 +8,7 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-space-grotesk' })
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://orenvahealth.com"),
   title: "orenva | Unified Healthcare AI Platform",
   description:
     "orenva is a premium healthcare AI platform unifying consultation, pharmacy, therapy, fitness, insurance, and wellness commerce in one intelligent ecosystem.",
@@ -27,6 +28,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        {/* Apply the saved theme before first paint to avoid a flash. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "(function(){try{if(localStorage.getItem('orenva-theme')==='dark'){document.documentElement.setAttribute('data-theme','dark')}}catch(e){}})()",
+          }}
+        />
+      </head>
       <body className={`${inter.variable} ${spaceGrotesk.variable} page-home`}>
         <ThemeProvider>
           {children}

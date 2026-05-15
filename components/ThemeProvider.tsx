@@ -3,16 +3,14 @@
 import { useEffect, useState } from 'react'
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [mounted, setMounted] = useState(false)
   const [theme, setTheme] = useState<'light' | 'dark'>('light')
 
   useEffect(() => {
-    // Get initial theme
+    // Sync state with the theme the inline <head> script already applied.
     const saved = localStorage.getItem('orenva-theme') as 'light' | 'dark' | null
     const initial = saved || 'light'
     setTheme(initial)
     applyTheme(initial)
-    setMounted(true)
   }, [])
 
   const applyTheme = (newTheme: 'light' | 'dark') => {
@@ -31,8 +29,8 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     applyTheme(newTheme)
   }
 
-  if (!mounted) return null
-
+  // Always render children — gating on a mounted flag would leave the
+  // server-rendered HTML empty (no content for crawlers or first paint).
   return (
     <>
       {children}
