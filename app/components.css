@@ -373,6 +373,22 @@
   font-weight: 600;
 }
 
+.form-feedback[data-state="error"] {
+  color: #d23d57;
+}
+
+.form-feedback[data-state="ok"] {
+  color: #1f9d68;
+}
+
+html[data-theme="dark"] .form-feedback[data-state="error"] {
+  color: #ff8095;
+}
+
+html[data-theme="dark"] .form-feedback[data-state="ok"] {
+  color: #5fd6a0;
+}
+
 .sub-card + .sub-card {
   margin-top: 1rem;
 }
@@ -383,8 +399,10 @@
   margin-top: 1rem;
 }
 
-/* Reveal Animations */
-[data-reveal] {
+/* Reveal Animations
+   Scoped to html.js so content is fully visible when JavaScript is
+   unavailable — without the .js gate these blocks would render blank. */
+.js [data-reveal] {
   opacity: 0;
   filter: blur(var(--reveal-blur, 18px));
   transform: translate3d(var(--reveal-x, 0), var(--reveal-y, 2.2rem), 0) scale(var(--reveal-scale, 0.985));
@@ -395,7 +413,7 @@
   transition-delay: var(--reveal-delay, 0ms);
 }
 
-[data-reveal].is-visible {
+.js [data-reveal].is-visible {
   opacity: 1;
   filter: blur(0);
   transform: translate3d(0, 0, 0) scale(1);

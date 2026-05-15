@@ -6,9 +6,14 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<'light' | 'dark'>('light')
 
   useEffect(() => {
-    // Sync state with the theme the inline <head> script already applied.
+    // Sync state with the theme the inline <head> script already applied —
+    // saved choice, else the OS colour-scheme preference.
     const saved = localStorage.getItem('orenva-theme') as 'light' | 'dark' | null
-    const initial = saved || 'light'
+    const prefersDark =
+      typeof window !== 'undefined' &&
+      typeof window.matchMedia === 'function' &&
+      window.matchMedia('(prefers-color-scheme: dark)').matches
+    const initial = saved || (prefersDark ? 'dark' : 'light')
     setTheme(initial)
     applyTheme(initial)
   }, [])
@@ -62,6 +67,16 @@ function ThemeToggleScript({
       })
     }
   }, [onToggle])
+
+  // Reflect the active theme to assistive tech and the visible label.
+  useEffect(() => {
+    const toggles = document.querySelectorAll('[data-theme-toggle]')
+    toggles.forEach((toggle) => {
+      toggle.setAttribute('aria-pressed', String(theme === 'dark'))
+      const label = toggle.querySelector('.theme-toggle-text')
+      if (label) label.textContent = theme === 'dark' ? 'Light mode' : 'Dark mode'
+    })
+  }, [theme])
 
   return null
 }

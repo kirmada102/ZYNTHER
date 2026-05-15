@@ -46,7 +46,7 @@ export default function Home() {
 
       <SiteHeader active="home" />
 
-      <main>
+      <main id="main">
         <section className="hero section-shell" id="hero">
           <div className="hero-copy" data-reveal>
             <p className="eyebrow-pill">Activating the future of healthcare</p>
@@ -135,6 +135,7 @@ export default function Home() {
                   className="glass-card module-card"
                   type="button"
                   data-module={module.id}
+                  aria-pressed="false"
                 >
                   <span className="module-line"></span>
                   <p className="module-tag">{module.label}</p>

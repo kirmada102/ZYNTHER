@@ -58,7 +58,7 @@ export default function AboutPage() {
 
       <SiteHeader active="about" />
 
-      <main>
+      <main id="main">
         <section className="section-shell content-section page-hero">
           <div className="page-hero-copy" data-reveal>
             <p className="eyebrow-pill">About orenva</p>

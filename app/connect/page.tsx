@@ -21,7 +21,7 @@ export default function ConnectPage() {
 
       <SiteHeader active="connect" />
 
-      <main>
+      <main id="main">
         <section className="section-shell content-section page-hero">
           <div className="page-hero-copy" data-reveal>
             <p className="eyebrow-pill">Connect</p>

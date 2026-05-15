@@ -57,7 +57,7 @@ export default function ForYouPage() {
 
       <SiteHeader active="for-you" />
 
-      <main>
+      <main id="main">
         <section className="section-shell content-section page-hero">
           <div className="page-hero-copy" data-reveal>
             <p className="eyebrow-pill">For you</p>

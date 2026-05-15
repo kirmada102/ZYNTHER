@@ -30,6 +30,24 @@ export function ClientScripts() {
       cleanups.push(() => link.removeEventListener('click', closeMenu))
     })
 
+    // Dismiss the open mobile menu with Escape or a tap outside the header.
+    const onKeydown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && body.classList.contains('menu-open')) {
+        closeMenu()
+        ;(menuToggle as HTMLElement | null)?.focus()
+      }
+    }
+    const onDocPointer = (event: Event) => {
+      if (!body.classList.contains('menu-open')) return
+      if (siteHeader && !siteHeader.contains(event.target as Node)) closeMenu()
+    }
+    document.addEventListener('keydown', onKeydown)
+    document.addEventListener('click', onDocPointer)
+    cleanups.push(() => {
+      document.removeEventListener('keydown', onKeydown)
+      document.removeEventListener('click', onDocPointer)
+    })
+
     // ─── Header visibility on scroll ───
     if (siteHeader) {
       let ticking = false

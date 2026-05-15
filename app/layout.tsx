@@ -29,15 +29,17 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* Apply the saved theme before first paint to avoid a flash. */}
+        {/* Mark JS as available (gates [data-reveal] hiding) and apply the
+            theme before first paint — saved choice, else OS preference. */}
         <script
           dangerouslySetInnerHTML={{
             __html:
-              "(function(){try{if(localStorage.getItem('orenva-theme')==='dark'){document.documentElement.setAttribute('data-theme','dark')}}catch(e){}})()",
+              "(function(){try{var d=document.documentElement;d.classList.add('js');var t=localStorage.getItem('orenva-theme');if(t==='dark'||(!t&&window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches)){d.setAttribute('data-theme','dark')}}catch(e){}})()",
           }}
         />
       </head>
       <body className={`${inter.variable} ${spaceGrotesk.variable} page-home`}>
+        <a href="#main" className="skip-link">Skip to content</a>
         <ThemeProvider>
           {children}
           <ClientScripts />
