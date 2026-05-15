@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
+import { AppleIcon, GooglePlayIcon, MailIcon, PhoneIcon } from '@/components/icons'
 
 export const metadata: Metadata = {
   title: 'Connect | orenva',
@@ -57,7 +58,7 @@ export default function ConnectPage() {
               </p>
               <div className="stacked-links">
                 <a className="platform-button" href="mailto:orenva.health@gmail.com">
-                  <span className="platform-icon">@</span>
+                  <span className="platform-icon"><MailIcon /></span>
                   <span>
                     <small>Email</small>
                     orenva.health@gmail.com
@@ -76,14 +77,14 @@ export default function ConnectPage() {
               <p>Reach the team in Europe or India directly — for partnerships and time-sensitive enquiries.</p>
               <div className="stacked-links">
                 <a className="platform-button" href="tel:+491745199723">
-                  <span className="platform-icon">EU</span>
+                  <span className="platform-icon"><PhoneIcon /></span>
                   <span>
                     <small>Europe</small>
                     +49 1745 199723
                   </span>
                 </a>
                 <a className="platform-button" href="tel:+918830224353">
-                  <span className="platform-icon">IN</span>
+                  <span className="platform-icon"><PhoneIcon /></span>
                   <span>
                     <small>India</small>
                     +91 88302 24353
@@ -107,7 +108,7 @@ export default function ConnectPage() {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <span className="platform-icon">A</span>
+                  <span className="platform-icon"><AppleIcon /></span>
                   <span>
                     <small>Download on the</small>
                     App Store
@@ -119,7 +120,7 @@ export default function ConnectPage() {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <span className="platform-icon">P</span>
+                  <span className="platform-icon"><GooglePlayIcon /></span>
                   <span>
                     <small>Get it on</small>
                     Google Play

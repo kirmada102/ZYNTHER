@@ -2,6 +2,7 @@ import HeroScene from '@/components/HeroScene'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import HomeInteractions from '@/components/HomeInteractions'
+import { AppleIcon, GooglePlayIcon } from '@/components/icons'
 
 const modules = [
   {
@@ -90,14 +91,14 @@ export default function Home() {
               <div className="platform-group">
                 <span className="platform-label">Download</span>
                 <a className="platform-button" href="https://www.apple.com/app-store/" target="_blank" rel="noreferrer">
-                  <span className="platform-icon">A</span>
+                  <span className="platform-icon"><AppleIcon /></span>
                   <span>
                     <small>Download on the</small>
                     App Store
                   </span>
                 </a>
                 <a className="platform-button" href="https://play.google.com/store" target="_blank" rel="noreferrer">
-                  <span className="platform-icon">P</span>
+                  <span className="platform-icon"><GooglePlayIcon /></span>
                   <span>
                     <small>Get it on</small>
                     Google Play
@@ -231,14 +232,14 @@ export default function Home() {
                 <p className="section-kicker">Download & follow</p>
                 <div className="stacked-links">
                   <a className="platform-button" href="https://www.apple.com/app-store/" target="_blank" rel="noreferrer">
-                    <span className="platform-icon">A</span>
+                    <span className="platform-icon"><AppleIcon /></span>
                     <span>
                       <small>Download on the</small>
                       App Store
                     </span>
                   </a>
                   <a className="platform-button" href="https://play.google.com/store" target="_blank" rel="noreferrer">
-                    <span className="platform-icon">P</span>
+                    <span className="platform-icon"><GooglePlayIcon /></span>
                     <span>
                       <small>Get it on</small>
                       Google Play
