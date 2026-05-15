@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 // Shared site footer.
 
 export default function SiteFooter() {
@@ -6,7 +8,7 @@ export default function SiteFooter() {
       <div className="footer-column footer-brand-column">
         <a className="footer-brand-lockup" href="/" aria-label="orenva home">
           <span className="brand-mark footer-mark">
-            <img className="brand-logo" src="/orenva-logo.png" alt="orenva logo" />
+            <Image className="brand-logo" src="/orenva-logo.png" alt="orenva logo" fill sizes="48px" />
           </span>
           <div>
             <p className="footer-brand">orenva</p>

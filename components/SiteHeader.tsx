@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 // Shared site header. Interactivity (menu toggle, scroll hide, theme
 // toggle) is wired globally by components/ClientScripts.tsx via the
 // data-* attributes below — this component only renders the markup.
@@ -16,7 +18,7 @@ export default function SiteHeader({ active }: { active?: string }) {
     <header className="site-header">
       <a className="brand" href="/" aria-label="orenva home">
         <span className="brand-mark">
-          <img className="brand-logo" src="/orenva-logo.png" alt="orenva logo" />
+          <Image className="brand-logo" src="/orenva-logo.png" alt="orenva logo" fill sizes="48px" priority />
         </span>
         <span className="brand-copy">
           <strong>orenva</strong>
