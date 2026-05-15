@@ -1,5 +1,7 @@
 import type { Metadata } from "next"
 import { Inter, Space_Grotesk } from 'next/font/google'
+import { ThemeProvider } from "@/components/ThemeProvider"
+import { ClientScripts } from "@/components/ClientScripts"
 import "./globals.css"
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
@@ -25,7 +27,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} ${spaceGrotesk.variable} page-home`}>{children}</body>
+      <body className={`${inter.variable} ${spaceGrotesk.variable} page-home`}>
+        <ThemeProvider>
+          {children}
+          <ClientScripts />
+        </ThemeProvider>
+      </body>
     </html>
   )
 }

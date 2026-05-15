@@ -1,147 +1,171 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
+
+interface SceneState {
+  activated: boolean
+  activeModuleId: string | null
+}
 
 export default function HeroScene() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  const [state, setState] = useState<SceneState>({
+    activated: false,
+    activeModuleId: null,
+  })
 
   useEffect(() => {
     if (!canvasRef.current) return
 
-    const modules = [
-      {
-        id: 'ai-doctor',
-        title: 'AI Doctor',
-        eyebrow: 'AI consultation',
-        tagline: 'Instant triage, intelligent care guidance, fewer physical visits.',
-        description:
-          'A clinically-minded AI consultation layer that helps users assess symptoms, understand next steps, and route into the right care pathway before they even step into a waiting room.',
-        benefits: [
-          'Smart symptom triage with unified health context',
-          'Faster answers before in-person escalation',
-          'Continuous guidance that follows the user journey',
-        ],
-        cta: 'Explore consultations',
-        accent: '#8f67ff',
-        glow: '#d8c7ff',
-        shape: 'orb',
-        position: [-3.8, 1.8, -1.4],
-        mobilePosition: [-1.7, 1.2, -0.8],
-      },
-      {
-        id: 'pharmacy',
-        title: 'Pharmacy',
-        eyebrow: 'Medication fulfillment',
-        tagline: 'Prescriptions, refills, and pharmacy logistics inside one flow.',
-        description:
-          'orenva connects consultations to pharmacy actions so care plans move directly from recommendation to fulfillment without forcing users into fragmented systems.',
-        benefits: [
-          'Integrated prescription and refill workflows',
-          'Fast medication discovery and ordering',
-          'Reduced friction between doctor, patient, and pharmacy',
-        ],
-        cta: 'Open pharmacy flow',
-        accent: '#a975ff',
-        glow: '#e4d6ff',
-        shape: 'cube',
-        position: [3.9, 1.5, -1.8],
-        mobilePosition: [1.7, 1.1, -0.8],
-      },
-      {
-        id: 'diet-fitness',
-        title: 'Diet & Fitness',
-        eyebrow: 'Lifestyle intelligence',
-        tagline: 'Adaptive routines for nutrition, movement, and prevention.',
-        description:
-          'A dynamic coaching layer that turns health recommendations into everyday plans for meals, recovery, sleep, and movement based on the user\'s profile.',
-        benefits: [
-          'Adaptive meal, movement, and recovery plans',
-          'Preventive insights guided by health context',
-          'Health goals linked to the broader care system',
-        ],
-        cta: 'View coaching',
-        accent: '#7ad4ff',
-        glow: '#d8f4ff',
-        shape: 'ring',
-        position: [-4.3, -1.2, -1],
-        mobilePosition: [-1.9, -0.4, -0.6],
-      },
-      {
-        id: 'therapy',
-        title: 'Therapy & Mental Health',
-        eyebrow: 'Emotional support',
-        tagline: 'Human-centered support for mood, resilience, and mental wellbeing.',
-        description:
-          'Therapy and wellbeing support sits alongside physical healthcare, helping orenva treat the user as a whole person rather than a list of disconnected issues.',
-        benefits: [
-          'Mental wellbeing check-ins within the same platform',
-          'Support flows that feel empathetic, not clinical',
-          'A continuous bridge between emotional and physical care',
-        ],
-        cta: 'See support system',
-        accent: '#ff9cc8',
-        glow: '#ffe0ef',
-        shape: 'capsule',
-        position: [0.1, -2.4, -2.1],
-        mobilePosition: [0, -1.2, -0.8],
-      },
-      {
-        id: 'insurance',
-        title: 'Insurance',
-        eyebrow: 'Coverage intelligence',
-        tagline: 'Coverage and claims clarity built into the patient journey.',
-        description:
-          'Insurance becomes a readable, actionable layer inside the product so users can understand coverage and next steps without translating medical and administrative complexity on their own.',
-        benefits: [
-          'Coverage-aware care recommendations',
-          'Reduced uncertainty around cost and claims',
-          'A simpler path from diagnosis to covered action',
-        ],
-        cta: 'Review coverage',
-        accent: '#86b6ff',
-        glow: '#dceaff',
-        shape: 'diamond',
-        position: [4.4, -1.4, -1.2],
-        mobilePosition: [1.9, -0.4, -0.6],
-      },
-      {
-        id: 'store',
-        title: 'Supplements & Store',
-        eyebrow: 'Marketplace layer',
-        tagline: 'Supplements, proteins, and trusted health products in one ecosystem.',
-        description:
-          'The store layer extends the health journey into recommended products and wellness essentials, keeping product discovery aligned with personal health goals.',
-        benefits: [
-          'Trusted wellness products alongside care insights',
-          'Contextual supplement and protein recommendations',
-          'One checkout mindset across care and commerce',
-        ],
-        cta: 'Enter marketplace',
-        accent: '#ffcb7a',
-        glow: '#fff0d4',
-        shape: 'prism',
-        position: [0.5, 2.9, -2.5],
-        mobilePosition: [0, 2.1, -1],
-      },
-    ]
-
-    const state = {
-      activated: false,
-      activeModuleId: null,
-    }
-
-    // Load Three.js dynamically
+    // Load Three.js from CDN
     const script = document.createElement('script')
     script.src = 'https://unpkg.com/three@0.164.1/build/three.min.js'
     script.async = true
+
     script.onload = () => {
-      // Scene will be initialized here
-      console.log('Three.js loaded')
+      const THREE = (window as any).THREE
+      if (!THREE) return
+
+      // Initialize scene
+      const canvas = canvasRef.current!
+      const scene = new THREE.Scene()
+      const camera = new THREE.PerspectiveCamera(
+        42,
+        canvas.clientWidth / canvas.clientHeight,
+        0.1,
+        40
+      )
+      const renderer = new THREE.WebGLRenderer({
+        canvas,
+        antialias: true,
+        alpha: true,
+        powerPreference: 'high-performance',
+      })
+
+      renderer.outputColorSpace = THREE.SRGBColorSpace
+      renderer.toneMapping = THREE.ACESFilmicToneMapping
+      renderer.toneMappingExposure = 1.08
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2))
+      renderer.setSize(canvas.clientWidth, canvas.clientHeight)
+
+      // Lighting
+      const ambientLight = new THREE.AmbientLight('#ffffff', 1.3)
+      const keyLight = new THREE.DirectionalLight('#fff8ff', 1.9)
+      const fillLight = new THREE.DirectionalLight('#d2bcff', 0.46)
+      keyLight.position.set(-5, 4, 5)
+      fillLight.position.set(5, -4, 3)
+      scene.add(ambientLight, keyLight, fillLight)
+
+      // Core orb
+      const orbGroup = new THREE.Group()
+      const orbMaterial = new THREE.MeshPhysicalMaterial({
+        color: '#eadcff',
+        emissive: '#af84ff',
+        emissiveIntensity: 0.22,
+        metalness: 0.1,
+        roughness: 0.08,
+        transmission: 0.88,
+        thickness: 0.95,
+        clearcoat: 1,
+        clearcoatRoughness: 0.08,
+        ior: 1.1,
+        transparent: true,
+        opacity: 0.96,
+      })
+
+      const coreMesh = new THREE.Mesh(
+        new THREE.IcosahedronGeometry(1.34, 4),
+        orbMaterial
+      )
+      orbGroup.add(coreMesh)
+
+      const coreGlow = new THREE.Mesh(
+        new THREE.SphereGeometry(0.78, 42, 42),
+        new THREE.MeshBasicMaterial({
+          color: '#ffffff',
+          transparent: true,
+          opacity: 0.26,
+        })
+      )
+      orbGroup.add(coreGlow)
+
+      // Rings
+      const ringOne = new THREE.Mesh(
+        new THREE.TorusGeometry(1.46, 0.024, 18, 120),
+        new THREE.MeshBasicMaterial({
+          color: '#efe4ff',
+          transparent: true,
+          opacity: 0.44,
+        })
+      )
+      const ringTwo = new THREE.Mesh(
+        new THREE.TorusGeometry(1.18, 0.018, 14, 96),
+        new THREE.MeshBasicMaterial({
+          color: '#a578ff',
+          transparent: true,
+          opacity: 0.28,
+        })
+      )
+      ringTwo.rotation.x = Math.PI / 2.35
+      orbGroup.add(ringOne, ringTwo)
+
+      const orbLight = new THREE.PointLight('#bd8cff', 11, 18)
+      orbGroup.add(orbLight)
+      scene.add(orbGroup)
+
+      // Animation loop
+      const clock = new THREE.Clock()
+      const animate = () => {
+        const delta = Math.min(clock.getDelta(), 0.05)
+        const elapsed = clock.elapsedTime
+
+        // Animate orb
+        orbGroup.rotation.y += delta * 0.26
+        orbGroup.position.y = Math.sin(elapsed * 0.85) * 0.14
+
+        ringOne.rotation.x += delta * 0.24
+        ringOne.rotation.y += delta * 0.38
+        ringTwo.rotation.x -= delta * 0.18
+        ringTwo.rotation.z += delta * 0.26
+
+        renderer.render(scene, camera)
+        requestAnimationFrame(animate)
+      }
+
+      animate()
+
+      // Handle window resize
+      const handleResize = () => {
+        const width = canvas.clientWidth
+        const height = canvas.clientHeight
+        camera.aspect = width / height
+        camera.updateProjectionMatrix()
+        renderer.setSize(width, height, false)
+      }
+
+      window.addEventListener('resize', handleResize)
+
+      // Handle activation click
+      const handleCanvasClick = () => {
+        setState((prev) => ({ ...prev, activated: true }))
+        orbMaterial.emissiveIntensity = 0.42
+        orbLight.intensity = 16
+      }
+
+      canvas.addEventListener('click', handleCanvasClick)
+
+      return () => {
+        window.removeEventListener('resize', handleResize)
+        canvas.removeEventListener('click', handleCanvasClick)
+      }
     }
+
     document.head.appendChild(script)
 
     return () => {
-      document.head.removeChild(script)
+      if (document.head.contains(script)) {
+        document.head.removeChild(script)
+      }
     }
   }, [])
 
