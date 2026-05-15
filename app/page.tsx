@@ -86,36 +86,6 @@ export default function Home() {
                 <p>The interaction system scales gracefully for mobile users.</p>
               </article>
             </div>
-
-            <div className="platform-strip glass-card">
-              <div className="platform-group">
-                <span className="platform-label">Download</span>
-                <a className="platform-button" href="https://www.apple.com/app-store/" target="_blank" rel="noreferrer">
-                  <span className="platform-icon"><AppleIcon /></span>
-                  <span>
-                    <small>Download on the</small>
-                    App Store
-                  </span>
-                </a>
-                <a className="platform-button" href="https://play.google.com/store" target="_blank" rel="noreferrer">
-                  <span className="platform-icon"><GooglePlayIcon /></span>
-                  <span>
-                    <small>Get it on</small>
-                    Google Play
-                  </span>
-                </a>
-              </div>
-
-              <div className="platform-group">
-                <span className="platform-label">Connect</span>
-                <a className="social-link" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">
-                  LinkedIn
-                </a>
-                <a className="social-link" href="https://www.instagram.com/" target="_blank" rel="noreferrer">
-                  Instagram
-                </a>
-              </div>
-            </div>
           </div>
         </section>
 

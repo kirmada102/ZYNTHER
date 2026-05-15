@@ -51,29 +51,6 @@
     radial-gradient(circle at bottom left, var(--feature-tint), rgba(143, 103, 255, 0) 46%);
 }
 
-.metric-card::after,
-.reveal-card::after,
-.story-card::after,
-.benefit-card::after,
-.connect-card::after,
-.blog-card::after,
-.large-copy-card::after,
-.founder-card::after,
-.stacked-story::after,
-.sub-card::after,
-.page-orb-card::after,
-.ecosystem-status::after {
-  content: "";
-  position: absolute;
-  right: -2.2rem;
-  bottom: -2.8rem;
-  width: 10rem;
-  height: 10rem;
-  border-radius: 999px;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0) 70%);
-  pointer-events: none;
-}
-
 .metric-card,
 .floating-card,
 .ecosystem-status,
@@ -146,6 +123,12 @@
   border: 1px solid var(--line);
   text-align: left;
   transition: transform var(--motion-quick), border-color var(--motion-quick), background var(--motion-quick), box-shadow var(--motion-quick);
+}
+
+.module-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(143, 103, 255, 0.3);
+  box-shadow: var(--shadow-strong);
 }
 
 .module-card::after {
@@ -306,7 +289,7 @@
   font-family: var(--font-space-grotesk, "Space Grotesk"), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: clamp(2rem, 4vw, 3.4rem);
   line-height: 0.98;
-  letter-spacing: -0.06em;
+  letter-spacing: -0.035em;
   text-wrap: balance;
 }
 
@@ -431,21 +414,6 @@ html[data-theme="dark"] .waitlist-form input {
 
 html[data-theme="dark"] .module-card.is-selected {
   border-color: rgba(184, 150, 255, 0.34);
-}
-
-html[data-theme="dark"] .metric-card::after,
-html[data-theme="dark"] .reveal-card::after,
-html[data-theme="dark"] .story-card::after,
-html[data-theme="dark"] .benefit-card::after,
-html[data-theme="dark"] .connect-card::after,
-html[data-theme="dark"] .blog-card::after,
-html[data-theme="dark"] .large-copy-card::after,
-html[data-theme="dark"] .founder-card::after,
-html[data-theme="dark"] .stacked-story::after,
-html[data-theme="dark"] .sub-card::after,
-html[data-theme="dark"] .page-orb-card::after,
-html[data-theme="dark"] .ecosystem-status::after {
-  background: radial-gradient(circle, rgba(184, 150, 255, 0.16), rgba(255, 255, 255, 0) 70%);
 }
 
 /* Responsive */
