@@ -58,7 +58,7 @@ export default function SiteHeader({ active }: { active?: string }) {
         aria-pressed="false"
       >
         <span className="theme-toggle-orb"></span>
-        <span className="theme-toggle-text">Dark mode</span>
+        <span className="theme-toggle-text">Light mode</span>
       </button>
 
       <div className="header-links desktop-only">

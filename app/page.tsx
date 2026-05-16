@@ -14,7 +14,7 @@ export default function Home() {
 
       <main id="main">
         <section className="hero section-shell" id="hero">
-          <div className="hero-copy" data-reveal>
+          <div className="hero-copy">
             <p className="eyebrow-pill">The unified healthcare platform</p>
             <h1>
               One intelligent ecosystem for{' '}
@@ -35,7 +35,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="hero-core" data-reveal aria-hidden="true">
+          <div className="hero-core" aria-hidden="true">
             <span className="hero-core__ring hero-core__ring--outer" />
             <span className="hero-core__ring hero-core__ring--inner" />
             <div className="hero-core__orbits">
