@@ -18,12 +18,12 @@
   --iris-soft: #c7b0ff;
   --white-soft: rgba(255, 255, 255, 0.76);
   --white-subtle: rgba(255, 255, 255, 0.42);
-  --line: rgba(134, 98, 201, 0.16);
+  --line: rgba(134, 98, 201, 0.3);
   --line-strong: rgba(255, 255, 255, 0.52);
   --shadow: 0 1px 2px rgba(40, 28, 80, 0.05), 0 9px 22px rgba(104, 76, 167, 0.09), 0 30px 60px rgba(104, 76, 167, 0.11);
   --shadow-strong: 0 2px 5px rgba(40, 28, 80, 0.08), 0 16px 34px rgba(104, 76, 167, 0.14), 0 42px 82px rgba(104, 76, 167, 0.18);
-  --glass-surface-1: rgba(255, 255, 255, 0.76);
-  --glass-surface-2: rgba(255, 255, 255, 0.26);
+  --glass-surface-1: rgba(255, 255, 255, 0.9);
+  --glass-surface-2: rgba(255, 255, 255, 0.62);
   --glass-highlight: rgba(255, 255, 255, 0.48);
   --glass-inner-line: rgba(255, 255, 255, 0.22);
   --glass-panel-1: rgba(255, 255, 255, 0.86);
@@ -33,8 +33,8 @@
   --surface-muted-soft: rgba(255, 255, 255, 0.42);
   --surface-field: rgba(255, 255, 255, 0.56);
   --surface-backdrop: rgba(255, 255, 255, 0.14);
-  --feature-glass-1: rgba(255, 255, 255, 0.74);
-  --feature-glass-2: rgba(255, 255, 255, 0.28);
+  --feature-glass-1: rgba(255, 255, 255, 0.95);
+  --feature-glass-2: rgba(255, 255, 255, 0.7);
   --feature-glow: rgba(255, 255, 255, 0.52);
   --feature-tint: rgba(143, 103, 255, 0.12);
   --radius-xl: 2rem;
@@ -58,7 +58,7 @@ html[data-theme="dark"] {
   --ink-faint: rgba(252, 249, 255, 0.68);
   --iris: #c09bff;
   --iris-soft: #eadbff;
-  --line: rgba(194, 162, 255, 0.24);
+  --line: rgba(194, 162, 255, 0.36);
   --line-strong: rgba(255, 255, 255, 0.2);
   --shadow: 0 2px 6px rgba(0, 0, 0, 0.4), 0 18px 44px rgba(0, 0, 0, 0.52);
   --shadow-strong: 0 4px 12px rgba(0, 0, 0, 0.5), 0 36px 76px rgba(0, 0, 0, 0.64);

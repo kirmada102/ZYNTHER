@@ -341,10 +341,18 @@ main,
 
 .hero h1 span {
   display: inline-block;
-  background: linear-gradient(135deg, #6e4acf, #a47fff, #fefefe);
+  /* Stay within readable purples — the old gradient faded to near-white,
+     leaving the last words barely legible on the light background. */
+  background: linear-gradient(115deg, #6e4acf, #a878ff 55%, #7d57e0);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+}
+
+html[data-theme="dark"] .hero h1 span {
+  background: linear-gradient(115deg, #b89cff, #e6d8ff 55%, #b89cff);
+  -webkit-background-clip: text;
+  background-clip: text;
 }
 
 .hero-text,
