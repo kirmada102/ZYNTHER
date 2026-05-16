@@ -24,7 +24,7 @@ export default function ConnectPage() {
 
       <main id="main">
         <section className="section-shell content-section page-hero">
-          <div className="page-hero-copy" data-reveal>
+          <div className="page-hero-copy">
             <p className="eyebrow-pill">Connect</p>
             <h1>Let&rsquo;s talk.</h1>
             <p>

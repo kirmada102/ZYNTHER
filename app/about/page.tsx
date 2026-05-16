@@ -60,7 +60,7 @@ export default function AboutPage() {
 
       <main id="main">
         <section className="section-shell content-section page-hero">
-          <div className="page-hero-copy" data-reveal>
+          <div className="page-hero-copy">
             <p className="eyebrow-pill">About orenva</p>
             <h1>Healthcare, made whole.</h1>
             <p>

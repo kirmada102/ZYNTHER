@@ -59,7 +59,7 @@ export default function ForYouPage() {
 
       <main id="main">
         <section className="section-shell content-section page-hero">
-          <div className="page-hero-copy" data-reveal>
+          <div className="page-hero-copy">
             <p className="eyebrow-pill">For you</p>
             <h1>Built around your health, not the system&rsquo;s.</h1>
             <p>
