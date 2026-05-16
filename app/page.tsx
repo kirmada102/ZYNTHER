@@ -29,9 +29,9 @@ export default function Home() {
             </p>
 
             <div className="hero-actions">
-              <button className="button-primary" type="button" data-activate>
-                Activate orenva
-              </button>
+              <a className="button-primary" href="/#cta">
+                Join the waitlist
+              </a>
               <a className="button-secondary" href="/ecosystem">
                 Explore the ecosystem
               </a>
@@ -85,19 +85,19 @@ export default function Home() {
             </div>
 
             <aside className="glass-card ecosystem-status" data-reveal>
-              <p className="section-kicker">Activation status</p>
-              <h3 id="activationStatus">Waiting for activation</h3>
-              <p id="activationDetail">
-                Click the activate button above to release the modules into the scene and open the interface as one
-                healthcare intelligence system.
+              <p className="section-kicker">Explore the system</p>
+              <h3>Pick a module</h3>
+              <p>
+                Select any module to see how it fits into one connected health context — and where it
+                hands off to the rest of orenva.
               </p>
 
               <div className="focus-card">
-                <p className="section-kicker">Current focus</p>
+                <p className="section-kicker">In focus</p>
                 <h4 id="currentFocusTitle">orenva Core</h4>
                 <p id="currentFocusText">
-                  A unified AI-first operating layer orchestrating consultation, pharmacy, therapy, insurance, and wellness
-                  as one experience.
+                  A unified, AI-first layer orchestrating consultation, pharmacy, therapy, insurance, and
+                  wellness as one experience.
                 </p>
               </div>
             </aside>
@@ -112,37 +112,19 @@ export default function Home() {
 
         <section className="section-shell content-section" id="about">
           <div className="section-heading" data-reveal>
-            <p className="section-kicker">About orenva</p>
-            <h2>Trustworthy healthcare infrastructure with a futuristic interface.</h2>
+            <p className="section-kicker">Why orenva</p>
+            <h2>Healthcare is scattered. We are building the thread.</h2>
             <p>
-              The experience feels like a product reveal, but the tone stays calm, medically credible, and deeply
-              human-centered.
+              You consult in one place, fill prescriptions in another, track fitness in a third, and
+              manage insurance somewhere else entirely. Every handoff loses context — and you are left
+              carrying the gap. orenva exists to close it.
             </p>
           </div>
 
-          <div className="card-grid three-up">
-            <article className="glass-card reveal-card" data-reveal>
-              <p className="section-kicker">Mission</p>
-              <h3>One unified care layer</h3>
-              <p>
-                Bring consultation, pharmacy, therapy, prevention, insurance, and wellness commerce into one intelligent
-                healthcare environment.
-              </p>
-            </article>
-            <article className="glass-card reveal-card" data-reveal>
-              <p className="section-kicker">Vision</p>
-              <h3>Healthcare without fragmentation</h3>
-              <p>
-                Replace disconnected services with one ecosystem that already understands the wider patient journey.
-              </p>
-            </article>
-            <article className="glass-card reveal-card" data-reveal>
-              <p className="section-kicker">Experience principle</p>
-              <h3>Advanced, precise, and empathetic</h3>
-              <p>
-                Every gradient, pulse, and transition is tuned to feel premium and reassuring rather than overwhelming.
-              </p>
-            </article>
+          <div data-reveal>
+            <a className="button-secondary" href="/about">
+              Read our story
+            </a>
           </div>
         </section>
 

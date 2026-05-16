@@ -2,10 +2,10 @@
 
 import { useEffect } from 'react'
 
-// Wires the home page's interactive layer — the "Activate orenva" button,
-// the six module cards, and the waitlist form. Renders nothing; it attaches
-// behaviour to markup that page.tsx renders server-side (via data-* hooks),
-// mirroring the ClientScripts pattern.
+// Wires the home page's interactive layer — the six module cards and the
+// waitlist form. Renders nothing; it attaches behaviour to markup that
+// page.tsx renders server-side (via data-* hooks), mirroring the
+// ClientScripts pattern.
 
 // Per-module copy shown in the "Current focus" panel when a card is picked.
 const MODULE_FOCUS: Record<string, { title: string; text: string }> = {
@@ -40,48 +40,19 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 export default function HomeInteractions() {
   useEffect(() => {
     const cleanups: Array<() => void> = []
-    const body = document.body
 
-    const activationStatus = document.getElementById('activationStatus')
-    const activationDetail = document.getElementById('activationDetail')
     const focusTitle = document.getElementById('currentFocusTitle')
     const focusText = document.getElementById('currentFocusText')
     const scenePulse = document.getElementById('scenePulse')
 
-    let activated = false
-
-    // Replay the radial pulse behind the 3D scene.
-    const firePulse = () => {
+    // A small flourish when a module is explored — replay the radial
+    // pulse behind the 3D scene and brighten the core orb.
+    const pulseScene = () => {
+      window.dispatchEvent(new CustomEvent('orenva:activate'))
       if (!scenePulse) return
       scenePulse.classList.remove('is-live')
-      // Force reflow so the animation can restart on repeat activations.
-      void scenePulse.offsetWidth
+      void scenePulse.offsetWidth // force reflow so the animation can restart
       scenePulse.classList.add('is-live')
-    }
-
-    const activate = () => {
-      if (!activated) {
-        activated = true
-        body.classList.add('orenva-activated')
-        if (activationStatus) activationStatus.textContent = 'orenva activated'
-        if (activationDetail) {
-          activationDetail.textContent =
-            'All six modules are live. Select any module to bring it into focus within the ecosystem.'
-        }
-        window.dispatchEvent(new CustomEvent('orenva:activate'))
-      }
-      firePulse()
-    }
-
-    // ─── Activate button ───
-    const activateBtn = document.querySelector<HTMLButtonElement>('[data-activate]')
-    if (activateBtn) {
-      const onActivate = () => {
-        activate()
-        activateBtn.textContent = 'orenva is live'
-      }
-      activateBtn.addEventListener('click', onActivate)
-      cleanups.push(() => activateBtn.removeEventListener('click', onActivate))
     }
 
     // ─── Module cards ───
@@ -92,8 +63,7 @@ export default function HomeInteractions() {
         const focus = MODULE_FOCUS[id]
         if (!focus) return
 
-        // Selecting a module also activates the ecosystem.
-        activate()
+        pulseScene()
 
         moduleCards.forEach((c) => {
           const selected = c === card
