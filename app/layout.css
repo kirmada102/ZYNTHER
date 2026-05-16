@@ -385,10 +385,18 @@ html[data-theme="dark"] .hero h1 span {
   font-size: 1.08rem;
 }
 
-/* Inner-page hero copy — cap the measure so lines stay readable
-   instead of running the full page width. */
+/* Cap the measure on copy that sits in full-width containers, so
+   lines stay readable instead of running the whole page width. */
 .page-hero-copy p {
   max-width: 42rem;
+}
+
+.large-copy-card h2 {
+  max-width: 22ch;
+}
+
+.large-copy-card p {
+  max-width: 44rem;
 }
 
 .hero-actions {
