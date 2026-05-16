@@ -1,36 +1,50 @@
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import HomeInteractions from '@/components/HomeInteractions'
-import { AppleIcon, GooglePlayIcon } from '@/components/icons'
 import { MODULES } from '@/lib/modules'
+
+const outcomes = [
+  {
+    title: 'One health context',
+    body: 'Every module reads from the same record. You explain yourself once — and never again.',
+  },
+  {
+    title: 'No cold starts',
+    body: 'A consultation flows into a prescription, a prescription into a claim. Nothing restarts.',
+  },
+  {
+    title: 'Care that compounds',
+    body: 'Each interaction sharpens the next. The platform learns the shape of your health over time.',
+  },
+]
 
 export default function Home() {
   return (
     <>
-      <div className="site-bg" aria-hidden="true"></div>
-      <div className="site-grid" aria-hidden="true"></div>
+      <div className="site-bg" aria-hidden="true" />
+      <div className="site-grid" aria-hidden="true" />
 
       <SiteHeader active="home" />
 
       <main id="main">
+        {/* ─── Hero ─── */}
         <section className="hero section-shell" id="hero">
           <div className="hero-copy">
             <p className="eyebrow-pill">The unified healthcare platform</p>
             <h1>
-              One intelligent ecosystem for{' '}
-              <span>consultation, care, and wellness.</span>
+              All of your health,{' '}
+              <span>finally connected.</span>
             </h1>
             <p className="hero-text">
-              orenva unifies AI consultation, pharmacy, therapy, fitness, insurance, and wellness
-              commerce into one platform — where every service shares a single understanding of you.
+              orenva brings AI consultation, pharmacy, therapy, fitness, insurance, and wellness
+              into one intelligent platform — one that actually remembers you.
             </p>
-
             <div className="hero-actions">
-              <a className="button-primary" href="/#cta">
+              <a className="button-primary" href="#cta">
                 Join the waitlist
               </a>
               <a className="button-secondary" href="/ecosystem">
-                Explore the ecosystem
+                See the platform
               </a>
             </div>
           </div>
@@ -59,159 +73,85 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="section-shell" id="highlights">
-          <div className="hero-metrics" data-reveal>
-            <article className="glass-card metric-card">
-              <p className="metric-label">AI consultation</p>
-              <h2>Fewer unnecessary visits</h2>
-              <p>Smart triage guides you before you enter fragmented care loops.</p>
-            </article>
-            <article className="glass-card metric-card">
-              <p className="metric-label">Unified journey</p>
-              <h2>One health context</h2>
-              <p>Pharmacy, therapy, insurance, and wellness all move through one system.</p>
-            </article>
-            <article className="glass-card metric-card">
-              <p className="metric-label">Built to scale</p>
-              <h2>Desktop and phone</h2>
-              <p>One considered experience, whatever you reach for it on.</p>
-            </article>
-          </div>
+        {/* ─── Problem ─── */}
+        <section className="section-shell problem">
+          <p className="section-kicker">The problem</p>
+          <h2 className="statement">
+            Your health lives in <em>a dozen apps</em> that have never met.
+          </h2>
+          <p className="problem-sub">
+            A consultation in one. A prescription in another. Fitness in a third, insurance in a
+            fourth. Every service begins from zero — and you are the only thread holding them
+            together.
+          </p>
         </section>
 
+        {/* ─── Ecosystem ─── */}
         <section className="section-shell content-section" id="ecosystem">
-          <div className="section-heading" data-reveal>
-            <p className="section-kicker">Ecosystem view</p>
-            <h2>Six intelligent modules orbit the orenva core.</h2>
+          <div className="section-heading">
+            <p className="section-kicker">The ecosystem</p>
+            <h2>Six modules. One platform.</h2>
             <p>
-              Click any module card below to explore how everything fits into one connected care experience.
+              Each is a complete service on its own. Together they become something no single app
+              can be.
             </p>
           </div>
+          <div className="eco-grid">
+            {MODULES.map((m, i) => (
+              <a key={m.id} href={`/ecosystem/${m.id}`} className="eco-card">
+                <span className="eco-card__num">{String(i + 1).padStart(2, '0')}</span>
+                <h3>{m.title}</h3>
+                <p>{m.tagline}</p>
+                <span className="eco-card__more">
+                  Explore <span aria-hidden="true">→</span>
+                </span>
+              </a>
+            ))}
+          </div>
+        </section>
 
-          <div className="ecosystem-layout">
-            <div className="module-grid" data-reveal>
-              {MODULES.map((module) => (
-                <button
-                  key={module.id}
-                  className="glass-card module-card"
-                  type="button"
-                  data-module={module.id}
-                  aria-pressed="false"
-                >
-                  <span className="module-line"></span>
-                  <p className="module-tag">{module.label}</p>
-                  <h3>{module.title}</h3>
-                  <p>{module.tagline}</p>
-                </button>
-              ))}
-            </div>
-
-            <aside className="glass-card ecosystem-status" data-reveal>
-              <p className="section-kicker">Explore the system</p>
-              <h3>Pick a module</h3>
-              <p>
-                Select any module to see how it fits into one connected health context — and where it
-                hands off to the rest of orenva.
-              </p>
-
-              <div className="focus-card">
-                <p className="section-kicker">In focus</p>
-                <h4 id="currentFocusTitle">orenva Core</h4>
-                <p id="currentFocusText">
-                  A unified, AI-first layer orchestrating consultation, pharmacy, therapy, insurance, and
-                  wellness as one experience.
-                </p>
+        {/* ─── The thread ─── */}
+        <section className="section-shell content-section thread">
+          <div className="section-heading">
+            <p className="section-kicker">Why it matters</p>
+            <h2>The point is not the modules. It is the thread between them.</h2>
+          </div>
+          <div className="outcome-row">
+            {outcomes.map((o) => (
+              <div key={o.title} className="outcome">
+                <span className="outcome__rule" aria-hidden="true" />
+                <h3>{o.title}</h3>
+                <p>{o.body}</p>
               </div>
-            </aside>
-          </div>
-
-          <div data-reveal style={{ marginTop: '1.7rem' }}>
-            <a className="button-secondary" href="/ecosystem">
-              Explore the full ecosystem
-            </a>
+            ))}
           </div>
         </section>
 
-        <section className="section-shell content-section" id="about">
-          <div className="section-heading" data-reveal>
-            <p className="section-kicker">Why orenva</p>
-            <h2>Healthcare is scattered. We are building the thread.</h2>
-            <p>
-              You consult in one place, fill prescriptions in another, track fitness in a third, and
-              manage insurance somewhere else entirely. Every handoff loses context — and you are left
-              carrying the gap. orenva exists to close it.
-            </p>
-          </div>
-
-          <div data-reveal>
-            <a className="button-secondary" href="/about">
-              Read our story
-            </a>
-          </div>
-        </section>
-
+        {/* ─── Waitlist ─── */}
         <section className="section-shell content-section" id="cta">
-          <div className="glass-card cta-panel" data-reveal>
-            <div className="cta-copy">
-              <p className="eyebrow-pill">Join the future of healthcare</p>
-              <h2>Enter the orenva waitlist and get ready for launch.</h2>
-              <p>Be among the first to experience the future of unified healthcare.</p>
-
-              <form className="waitlist-form" data-waitlist-form>
-                <label className="sr-only" htmlFor="waitlistEmail">
-                  Email address
-                </label>
-                <input
-                  id="waitlistEmail"
-                  type="email"
-                  name="email"
-                  placeholder="Enter your email for the preview waitlist"
-                  required
-                />
-                <button className="button-primary" type="submit">
-                  Join waitlist
-                </button>
-              </form>
-              <p className="form-feedback" data-waitlist-feedback></p>
-            </div>
-
-            <div className="cta-side">
-              <article className="glass-card sub-card">
-                <p className="section-kicker">Download & follow</p>
-                <div className="stacked-links">
-                  <a className="platform-button" href="https://www.apple.com/app-store/" target="_blank" rel="noreferrer">
-                    <span className="platform-icon"><AppleIcon /></span>
-                    <span>
-                      <small>Download on the</small>
-                      App Store
-                    </span>
-                  </a>
-                  <a className="platform-button" href="https://play.google.com/store" target="_blank" rel="noreferrer">
-                    <span className="platform-icon"><GooglePlayIcon /></span>
-                    <span>
-                      <small>Get it on</small>
-                      Google Play
-                    </span>
-                  </a>
-                </div>
-                <div className="social-row">
-                  <a className="social-link" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">
-                    LinkedIn
-                  </a>
-                  <a className="social-link" href="https://www.instagram.com/" target="_blank" rel="noreferrer">
-                    Instagram
-                  </a>
-                </div>
-              </article>
-
-              <article className="glass-card sub-card">
-                <p className="section-kicker">Platform promise</p>
-                <p>
-                  Everything healthcare in one intelligent platform, from AI doctor consultation to pharmacy, therapy,
-                  insurance, and wellness products.
-                </p>
-              </article>
-            </div>
+          <div className="cta-block">
+            <p className="section-kicker">Be early</p>
+            <h2>Join the orenva waitlist.</h2>
+            <p className="cta-block__sub">
+              We are opening the platform to a first group of members before launch. Add your email
+              and you will be among them.
+            </p>
+            <form className="waitlist-form stacked" data-waitlist-form>
+              <label className="sr-only" htmlFor="waitlistEmail">
+                Email address
+              </label>
+              <input
+                id="waitlistEmail"
+                type="email"
+                name="email"
+                placeholder="you@example.com"
+                required
+              />
+              <button className="button-primary" type="submit">
+                Join the waitlist
+              </button>
+            </form>
+            <p className="form-feedback" data-waitlist-feedback />
           </div>
         </section>
       </main>
