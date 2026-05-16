@@ -1,4 +1,3 @@
-import HeroScene from '@/components/HeroScene'
 import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import HomeInteractions from '@/components/HomeInteractions'
@@ -11,21 +10,19 @@ export default function Home() {
       <div className="site-bg" aria-hidden="true"></div>
       <div className="site-grid" aria-hidden="true"></div>
 
-      <HeroScene />
-
       <SiteHeader active="home" />
 
       <main id="main">
         <section className="hero section-shell" id="hero">
           <div className="hero-copy" data-reveal>
-            <p className="eyebrow-pill">Activating the future of healthcare</p>
+            <p className="eyebrow-pill">The unified healthcare platform</p>
             <h1>
-              One intelligent ecosystem for
+              One intelligent ecosystem for{' '}
               <span>consultation, care, and wellness.</span>
             </h1>
             <p className="hero-text">
-              orenva unifies AI doctor consultation, pharmacy ordering, diet and fitness coaching, therapy support,
-              insurance intelligence, and supplements into one premium health-tech platform.
+              orenva unifies AI consultation, pharmacy, therapy, fitness, insurance, and wellness
+              commerce into one platform — where every service shares a single understanding of you.
             </p>
 
             <div className="hero-actions">
@@ -36,24 +33,49 @@ export default function Home() {
                 Explore the ecosystem
               </a>
             </div>
+          </div>
 
-            <div className="hero-metrics">
-              <article className="glass-card metric-card">
-                <p className="metric-label">AI consultation</p>
-                <h2>Fewer unnecessary visits</h2>
-                <p>Smart triage guides users before they enter fragmented care loops.</p>
-              </article>
-              <article className="glass-card metric-card">
-                <p className="metric-label">Unified journey</p>
-                <h2>One health context</h2>
-                <p>Pharmacy, therapy, insurance, and wellness move through one system.</p>
-              </article>
-              <article className="glass-card metric-card">
-                <p className="metric-label">Future ready</p>
-                <h2>Built for desktop and phone</h2>
-                <p>The interaction system scales gracefully for mobile users.</p>
-              </article>
+          <div className="hero-core" data-reveal aria-hidden="true">
+            <span className="hero-core__ring hero-core__ring--outer" />
+            <span className="hero-core__ring hero-core__ring--inner" />
+            <div className="hero-core__orbits">
+              {MODULES.map((m, i) => (
+                <span
+                  key={m.id}
+                  className="hero-core__orbit"
+                  style={{ transform: `rotate(${i * 60}deg)` }}
+                >
+                  <span className="hero-core__node" />
+                </span>
+              ))}
             </div>
+            <div className="hero-core__orb">
+              <span className="hero-core__orb-label">
+                orenva
+                <br />
+                core
+              </span>
+            </div>
+          </div>
+        </section>
+
+        <section className="section-shell" id="highlights">
+          <div className="hero-metrics" data-reveal>
+            <article className="glass-card metric-card">
+              <p className="metric-label">AI consultation</p>
+              <h2>Fewer unnecessary visits</h2>
+              <p>Smart triage guides you before you enter fragmented care loops.</p>
+            </article>
+            <article className="glass-card metric-card">
+              <p className="metric-label">Unified journey</p>
+              <h2>One health context</h2>
+              <p>Pharmacy, therapy, insurance, and wellness all move through one system.</p>
+            </article>
+            <article className="glass-card metric-card">
+              <p className="metric-label">Built to scale</p>
+              <h2>Desktop and phone</h2>
+              <p>One considered experience, whatever you reach for it on.</p>
+            </article>
           </div>
         </section>
 

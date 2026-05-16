@@ -339,6 +339,14 @@ main,
   text-wrap: balance;
 }
 
+/* The home hero headline is smaller and less cramped than the inner-page
+   heroes — it shares the row with the ecosystem-core visual. */
+.hero h1 {
+  font-size: clamp(2.5rem, 4.4vw, 4.5rem);
+  line-height: 1.04;
+  max-width: 16ch;
+}
+
 .hero h1 span {
   display: inline-block;
   /* Stay within readable purples — the old gradient faded to near-white,
