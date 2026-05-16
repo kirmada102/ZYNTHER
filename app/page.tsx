@@ -3,39 +3,7 @@ import SiteHeader from '@/components/SiteHeader'
 import SiteFooter from '@/components/SiteFooter'
 import HomeInteractions from '@/components/HomeInteractions'
 import { AppleIcon, GooglePlayIcon } from '@/components/icons'
-
-const modules = [
-  {
-    id: 'ai-doctor',
-    title: 'AI Doctor',
-    label: 'AI consultation',
-  },
-  {
-    id: 'pharmacy',
-    title: 'Pharmacy',
-    label: 'Medication fulfillment',
-  },
-  {
-    id: 'diet-fitness',
-    title: 'Diet & Fitness',
-    label: 'Lifestyle intelligence',
-  },
-  {
-    id: 'therapy',
-    title: 'Therapy & Mental Health',
-    label: 'Emotional support',
-  },
-  {
-    id: 'insurance',
-    title: 'Insurance',
-    label: 'Coverage intelligence',
-  },
-  {
-    id: 'store',
-    title: 'Supplements & Store',
-    label: 'Marketplace layer',
-  },
-]
+import { MODULES } from '@/lib/modules'
 
 export default function Home() {
   return (
@@ -64,8 +32,8 @@ export default function Home() {
               <button className="button-primary" type="button" data-activate>
                 Activate orenva
               </button>
-              <a className="button-secondary" href="#ecosystem">
-                Explore ecosystem
+              <a className="button-secondary" href="/ecosystem">
+                Explore the ecosystem
               </a>
             </div>
 
@@ -100,7 +68,7 @@ export default function Home() {
 
           <div className="ecosystem-layout">
             <div className="module-grid" data-reveal>
-              {modules.map((module) => (
+              {MODULES.map((module) => (
                 <button
                   key={module.id}
                   className="glass-card module-card"
@@ -111,7 +79,7 @@ export default function Home() {
                   <span className="module-line"></span>
                   <p className="module-tag">{module.label}</p>
                   <h3>{module.title}</h3>
-                  <p>Learn more about our {module.title.toLowerCase()} solution.</p>
+                  <p>{module.tagline}</p>
                 </button>
               ))}
             </div>
@@ -133,6 +101,12 @@ export default function Home() {
                 </p>
               </div>
             </aside>
+          </div>
+
+          <div data-reveal style={{ marginTop: '1.7rem' }}>
+            <a className="button-secondary" href="/ecosystem">
+              Explore the full ecosystem
+            </a>
           </div>
         </section>
 

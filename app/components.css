@@ -154,6 +154,63 @@
   background: linear-gradient(90deg, var(--module-glow), var(--module-accent));
 }
 
+/* Capability list — the ecosystem module panels. */
+.module-capabilities {
+  list-style: none;
+  margin: 1.3rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.module-capabilities li {
+  position: relative;
+  padding-left: 1.6rem;
+  color: var(--ink-soft);
+  line-height: 1.65;
+}
+
+.module-capabilities li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 999px;
+  background: var(--iris);
+}
+
+html[data-theme="dark"] .module-capabilities li::before {
+  box-shadow: 0 0 9px rgba(150, 112, 255, 0.9);
+}
+
+/* Quick-jump index on the ecosystem page. */
+.module-index {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.module-index__link {
+  display: inline-flex;
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface-muted);
+  color: var(--ink-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  transition: color var(--motion-quick), border-color var(--motion-quick), transform var(--motion-quick);
+}
+
+.module-index__link:hover {
+  color: var(--ink);
+  border-color: var(--ring);
+  transform: translateY(-2px);
+}
+
 .module-card h3,
 .focus-card h4,
 .founder-role {
