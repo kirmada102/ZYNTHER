@@ -696,6 +696,13 @@ html[data-theme="dark"] .section-heading .section-kicker::before {
   align-items: stretch;
 }
 
+/* In the column layout, the input's flex-basis would otherwise become
+   its height and balloon into a huge block — pin it to a normal size. */
+.waitlist-form.stacked input {
+  flex: none;
+  width: 100%;
+}
+
 .waitlist-form input {
   flex: 1 1 18rem;
   min-height: 3.45rem;
